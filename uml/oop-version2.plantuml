@@ -1,0 +1,48 @@
+@startuml
+abstract class Vehicle {
+  -String licensePlate
+  -String make
+  -String model
+  #double rentalPrice
+  +String getLicensePlate()
+  +String getMake()
+  +String getModel()
+  +double getRentalPrice()
+  +double calculateRentalCost(int days)
+}
+
+class Car {
+  -String type
+  +double calculateRentalCost(int days)
+}
+
+class Truck {
+  -int capacity
+  +double calculateRentalCost(int days)
+}
+
+interface Customer {
+  +String getName()
+  +void rentVehicle(Vehicle vehicle, int days)
+  +List<Vehicle> getRentedVehicles()
+}
+
+class RegularCustomer {
+  -String name
+  +String getName()
+  +void rentVehicle(Vehicle vehicle, int days)
+  +List<Vehicle> getRentedVehicles()
+}
+
+class CorporateCustomer {
+  -String companyName
+  +String getName()
+  +void rentVehicle(Vehicle vehicle, int days)
+  +List<Vehicle> getRentedVehicles()
+}
+
+Vehicle <|-- Car
+Vehicle <|-- Truck
+Customer <|.. RegularCustomer
+Customer <|.. CorporateCustomer
+@enduml
