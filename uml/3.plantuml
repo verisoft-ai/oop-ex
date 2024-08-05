@@ -1,0 +1,46 @@
+@startuml
+abstract class Book {
+  -String title
+  -String author
+  #double price
+  +String getTitle()
+  +String getAuthor()
+  +double getPrice()
+  +double calculateDiscount()
+}
+
+class FictionBook {
+  -String genre
+  +double calculateDiscount()
+}
+
+class NonFictionBook {
+  -String subject
+  +double calculateDiscount()
+}
+
+interface Customer {
+  +String getName()
+  +void buyBook(Book book)
+  +List<Book> getPurchasedBooks()
+}
+
+class RegularCustomer {
+  -String name
+  +String getName()
+  +void buyBook(Book book)
+  +List<Book> getPurchasedBooks()
+}
+
+class PremiumCustomer {
+  -String membershipId
+  +String getName()
+  +void buyBook(Book book)
+  +List<Book> getPurchasedBooks()
+}
+
+Book <|-- FictionBook
+Book <|-- NonFictionBook
+Customer <|.. RegularCustomer
+Customer <|.. PremiumCustomer
+@enduml
