@@ -1,0 +1,46 @@
+@startuml
+abstract class Pet {
+  -String name
+  -int age
+  #String species
+  +String getName()
+  +int getAge()
+  +String getSpecies()
+  +String makeSound()
+  +String eat()
+}
+
+class Dog {
+  -String breed
+  +String makeSound()
+  +String eat()
+}
+
+class Cat {
+  -String color
+  +String makeSound()
+  +String eat()
+}
+
+interface Veterinarian {
+  +String getName()
+  +String examinePet(Pet pet)
+}
+
+class GeneralVeterinarian {
+  -String name
+  +String getName()
+  +String examinePet(Pet pet)
+}
+
+class SpecialistVeterinarian {
+  -String specialty
+  +String getName()
+  +String examinePet(Pet pet)
+}
+
+Pet <|-- Dog
+Pet <|-- Cat
+Veterinarian <|.. GeneralVeterinarian
+Veterinarian <|.. SpecialistVeterinarian
+@enduml
