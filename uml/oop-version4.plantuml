@@ -1,0 +1,52 @@
+@startuml
+abstract class Person {
+  -String name
+  -int age
+  #String address
+  +String getName()
+  +int getAge()
+  +String getAddress()
+  +String getRole()
+}
+
+class Student {
+  -String studentId
+  +String getRole()
+  +String study()
+}
+
+class Professor {
+  -String department
+  +String getRole()
+  +String teach()
+}
+
+interface Course {
+  +String getCourseName()
+  +String getCourseCode()
+  +void addParticipant(Person person)
+  +List<Person> getParticipants()
+}
+
+class UndergraduateCourse {
+  -String courseName
+  -String courseCode
+  +String getCourseName()
+  +String getCourseCode()
+  +void addParticipant(Person person)
+  +List<Person> getParticipants()
+}
+
+class GraduateCourse {
+  -String researchFocus
+  +String getCourseName()
+  +String getCourseCode()
+  +void addParticipant(Person person)
+  +List<Person> getParticipants()
+}
+
+Person <|-- Student
+Person <|-- Professor
+Course <|.. UndergraduateCourse
+Course <|.. GraduateCourse
+@enduml
