@@ -1,0 +1,46 @@
+@startuml
+abstract class Product {
+  -String productId
+  -String name
+  #double price
+  +String getProductId()
+  +String getName()
+  +double getPrice()
+  +String getDescription()
+}
+
+class Electronics {
+  -int warrantyPeriod
+  +String getDescription()
+}
+
+class Clothing {
+  -String size
+  +String getDescription()
+}
+
+interface User {
+  +String getUsername()
+  +void addProductToCart(Product product)
+  +List<Product> getCartContents()
+}
+
+class RegularUser {
+  -String username
+  +String getUsername()
+  +void addProductToCart(Product product)
+  +List<Product> getCartContents()
+}
+
+class PremiumUser {
+  -String membershipLevel
+  +String getUsername()
+  +void addProductToCart(Product product)
+  +List<Product> getCartContents()
+}
+
+Product <|-- Electronics
+Product <|-- Clothing
+User <|.. RegularUser
+User <|.. PremiumUser
+@enduml
